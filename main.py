@@ -22,46 +22,6 @@ def encrypt_rail_fence(text, key):
     return ''.join(rails)
 
 
-# def decrypt_rail_fence(ciphertext, key):
-#     # Cria uma lista de strings vazias para armazenar as letras em cada linha
-#     rails = [''] * key
-#     # Variáveis para acompanhar a direção e a posição atual
-#     down = None
-#     row = 0
-#
-#     # Calcula o comprimento de cada trilho
-#     lengths = [0] * key
-#     for i in range(len(ciphertext)):
-#         lengths[row] += 1
-#         if row == 0 or row == key - 1:
-#             down = not down
-#         if down:
-#             row += 1
-#         else:
-#             row -= 1
-#
-#     # Preenche as letras na matriz
-#     start = 0
-#     for i in range(key):
-#         rails[i] = ciphertext[start:start + lengths[i]]
-#         start += lengths[i]
-#
-#     # Reconstrói a string original
-#     plaintext = ''
-#     row = 0
-#     index = [0] * key
-#     for i in range(len(ciphertext)):
-#         plaintext += rails[row][index[row]]
-#         index[row] += 1
-#         if row == 0 or row == key - 1:
-#             down = not down
-#         if down:
-#             row += 1
-#         else:
-#             row -= 1
-#
-#     return plaintext
-
 def rail_fence_decipher(ciphertext, key):
     # Inicializa uma lista de listas para representar as "trilhas" vazias
     rails = [[] for _ in range(key)]
@@ -149,10 +109,15 @@ keyC = 4
 # texto_decifrado = decrypt_rail_fence(mensagem_oculta, 4)
 # print("Texto decifrado:", texto_decifrado)
 
+# Teste
+print("Mensagem Teste: " + rail_fence_decipher("GsGsekfrek eoe",3))
+
 # Decifrando as mensagens das Equipes
-mensagem_decifradaA = rail_fence_decipher(mensagem_grupoA, 6)
+mensagem_decifradaA = rail_fence_decipher(mensagem_grupoA, keyA)
 print("Mensagem Decifrada A: " + mensagem_decifradaA)
 
-mensagem_decifradaC = rail_fence_decipher(mensagem_grupoC, 4)
+mensagem_decifradaC = rail_fence_decipher(mensagem_grupoC, keyC)
 print("Mensagem Decifrada C: " + mensagem_decifradaC)
+
+
 
